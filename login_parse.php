@@ -13,7 +13,7 @@ if (isset($_POST['username'])) {
 
 	if (mysql_num_rows($res) == 1) {
 		$row = mysql_fetch_assoc($res);
-		$_SESSION['uid'] = $row ['id'];
+		$_SESSION['uid'] = $row ['uid'];
 		$_SESSION['username'] = $row ['username'];
 		header("Location: index.php");
 		exit();
