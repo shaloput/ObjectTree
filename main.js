@@ -64,7 +64,7 @@ function ajax_edit(el){
     // Create our XMLHttpRequest object
     var hr = new XMLHttpRequest();
     // Create some variables we need to send to our PHP file
-    var url = "parse_descr.php";
+    var url = "parse_edit.php";
 
     //alert(el.getAttribute('id'));
     var id = el.getAttribute('id');
@@ -76,8 +76,13 @@ function ajax_edit(el){
     // Access the onreadystatechange event for the XMLHttpRequest object
     hr.onreadystatechange = function() {
         if(hr.readyState == 4 && hr.status == 200) {
-            var return_data = hr.responseText;
-            document.getElementById("output_d").innerHTML = return_data;
+            var dataArray = hr.responseText.split("|");
+
+            document.getElementById("oid").value = dataArray[0];
+            document.getElementById("o_name").value = dataArray[1];
+            document.getElementById("o_parent").value = dataArray[3];
+            document.getElementById("output_d").innerHTML = dataArray[2];
+
         }
     }
     // Send the data to PHP now... and wait for response to update the status div

@@ -146,4 +146,8 @@ button {
 .inner input {
 	height: 25px;
 	margin-bottom: 10px;
-} 
+}
+
+#oid {
+	width: 50px;
+}
