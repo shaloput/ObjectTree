@@ -93,7 +93,39 @@ ul {
 
 }
 
-.expand{
-	text-decoration: none;
+.pin {
+	width: 10px;
+	height: 10px;
+	color: #1e7a96;
+
 	font-weight: bold;
+}
+
+.expand:after {
+	content: "+";
+}
+
+.collapse:after{
+	content:"-";
+}
+
+.expand:after {
+	content: "+";
+}
+
+ul a {
+	text-decoration: none;
+	color: #1e7a96;
+}
+
+li {
+	line-height: 20px;
+}
+
+.collapsed {
+	display: none;
+}
+
+.expanded {
+	display: block;
 }

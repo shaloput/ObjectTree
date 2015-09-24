@@ -32,28 +32,11 @@
 
 		<div class="contents">
 			<h3>Objects:</h3>
+			
 			<div class="inner">			
 			 <?php 
 				include_once("connect.php");
-				/*$sql = "SELECT * FROM objects WHERE parent_id=0	 ORDER BY obj_id ASC";
-
-				$res = mysql_query($sql) or die(mysql_error());
-				$objects = "";
-
-				if (mysql_num_rows($res) > 0) {
-					while ($row = mysql_fetch_assoc($res)) {
-						$id = $row['obj_id'];
-						$name = $row['name'];
-						$descr = $row['descr'];
-						$objects .= "<p>".$name."</p>";
-					}
-
-					echo $objects;
-				} else {
-					echo "<p>There are no object avaible yet.</p>"; 
-				}*/
-				
-				
+								
 				function getObjects() {
 				    $sql = mysql_query("SELECT id, name, parent_id FROM objects");
 				    $res = array();
@@ -71,19 +54,25 @@
 				function OutTree($parent_id, $lvl) {
 				    global $objects_arr; //Делаем переменную $objects_arr видимой в функции
 				    
+				    if ($parent_id == 0) {
+				    	$show = "";
+				    } else {
+				    	$show = " class=\"collapsed\"";
+				    }
+
 				    if (isset($objects_arr[$parent_id])) { //Если объект с таким parent_id существует
 				        
-				        echo("<ul>\n");
+				        echo("<ul ".$show.">\n");
 
 				        foreach ($objects_arr[$parent_id] as $value) { //Обходим
 				            
 				            $id = $value["id"];
 
 							echo("<li>\n");
-							echo("<a href=\""."?id=".$id."\">".$id." ".$value["name"]." ".$value["parent_id"]."</a>"."  \n");
+							echo("<a href=\""."?id=".$id."\">"." ".$value["name"]."</a>"."  \n");
 							
 						if (isset($objects_arr[$id])) {
-							echo ("<a class='expand' href='#''>+</a> \n");								
+							echo ("<a class='pin expand' href='#'' OnClick='hide_sibls(this)'></a> \n");
 						}
 						
 							OutTree($id, $lvl); 
@@ -127,6 +116,7 @@
 		</div>
 	</div><!-- container -->
 			
-	</div>
+	<script src="main.js" charset="utf-8"></script>
+
 </body>
 </html>
