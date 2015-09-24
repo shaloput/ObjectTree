@@ -15,12 +15,16 @@ if (isset($_POST['username'])) {
 		$row = mysql_fetch_assoc($res);
 		$_SESSION['uid'] = $row ['uid'];
 		$_SESSION['username'] = $row ['username'];
-		header("Location: index.php");
+		
+		header("Location: login.php");
 		exit();
 	} else {
-		echo "Invalid login information. Please return to th previous page";
+		$_SESSION['logged'] = false;
+		header("Location: index.php");
+		//echo "Invalid login information. Please return to the previous page";
 		exit();
 	}
+
 }
 
 ?>

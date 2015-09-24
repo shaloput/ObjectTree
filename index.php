@@ -17,8 +17,11 @@
 				echo "<form class='login' method='post' action='login_parse.php'>
 					<input type='text' name='username'>
 					<input type='password' name='password'>
-					<input class='btn' type='Submit' value='Log In'>
-				</form>";
+					<input class='btn' type='Submit' value='Log In'>";
+				if (isset($_SESSION['logged']) && !$_SESSION['logged']) {
+					echo "<p>Please enter correct login information and try again";
+				}
+				echo "</form>";
 			} else {
 				echo "<p class='login'>You are logged in as ".$_SESSION['username']." &bull; <a href='logout_parse.php'>Logout</a>";
 			}
@@ -33,85 +36,16 @@
 		<div class="contents">
 			<h3>Objects:</h3>
 			
-			<div class="inner">			
-			 <?php 
-				include_once("connect.php");
-								
-				function getObjects() {
-				    $sql = mysql_query("SELECT id, name, parent_id FROM objects");
-				    $res = array();
-				    while ($row = mysql_fetch_array($sql)) {
-				        $res[$row["parent_id"]][] = $row;
-				    }
-				    return $res;
-				}
-				 
-				//В переменную $objects_arr записываем все объекты
-				$objects_arr = getObjects();
-
-
-
-				function OutTree($parent_id, $lvl) {
-				    global $objects_arr; //Делаем переменную $objects_arr видимой в функции
-				    
-				    if ($parent_id == 0) {
-				    	$show = "";
-				    } else {
-				    	$show = " class=\"collapsed\"";
-				    }
-
-				    if (isset($objects_arr[$parent_id])) { //Если объект с таким parent_id существует
-				        
-				        echo("<ul ".$show.">\n");
-
-				        foreach ($objects_arr[$parent_id] as $value) { //Обходим
-				            
-				            $id = $value["id"];
-
-							echo("<li>\n");
-							echo("<a href=\""."?id=".$id."\">"." ".$value["name"]."</a>"."  \n");
-							
-						if (isset($objects_arr[$id])) {
-							echo ("<a class='pin expand' href='#'' OnClick='hide_sibls(this)'></a> \n");
-						}
-						
-							OutTree($id, $lvl); 
-							$lvl--;
-						}
-
-				        
-				    	echo("</ul>\n");
-				    }
-				}
-				 
-				outTree(0, 0);
-				 
-				?>
+			<div class="inner" id="output_o">			
+			 
 			</div><!-- tree -->
 		</div><!--contents -->
 
 
 		<div class="contents descr">
 			<h3>Description:</h3>
-			<div class="inner">
-				<?php 
-					if (isset($_GET['id'])) {
-					
-						$oid = $_GET['id'];
-					
-						$sql2="SELECT descr FROM objects WHERE id=".$oid." LIMIT 1";
-						$res2 = mysql_query($sql2) or die(mysql_error());
-						
-						if (mysql_num_rows($res2) > 0) {
-						while ($row = mysql_fetch_assoc($res2)) {
-							$descr = $row['descr'];
-						}
-						echo $descr;
-						} else {
-						echo "<p>There are no Description for this object</p>"; 
-						}
-					}
-				 ?>
+			<div class="inner" id="output_d">
+				
 			</div>
 		</div>
 	</div><!-- container -->

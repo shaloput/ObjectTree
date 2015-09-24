@@ -39,7 +39,7 @@ h1 {
 	margin-top: 10px;
 }
 
-input {
+.login input {
 	display: inline-block;
 	background: #ffffea;
 	width: 150px;
@@ -47,7 +47,7 @@ input {
 	border: 1px solid #ffffaa;
 }
 
-.btn {
+.login .btn {
 	width: 50px;
 	height: 25px;
 	background: #626168;
@@ -57,10 +57,14 @@ input {
 	cursor: pointer;
 }
 
-.btn:hover {
+.login .btn:hover {
 	background: #77767b;
 }
 
+.login p {
+	color: #ff4c00;
+	font-size: 12px;
+}
 .contents {
 	margin-top: 30px;
 	background: #ffffea;
@@ -77,13 +81,12 @@ input {
 }
 
 .inner {
-	margin-top: 10px;
-	margin-left: 20px;
+	margin: 10px 20px;
 }
 
 ul {
 	list-style: none;
-	margin-left: 10px;
+	margin-left: 15px;
 }
 
 .descr {
@@ -126,6 +129,21 @@ li {
 	display: none;
 }
 
-.expanded {
+#output_d {
 	display: block;
+	width: 100%;
+	max-width: 100%;
+	min-height: 100px;
+	margin: 20px auto;
+	margin-top: 10px;
 }
+
+button {
+	width: 50px;
+	height: 25px;
+}
+
+.inner input {
+	height: 25px;
+	margin-bottom: 10px;
+} 
