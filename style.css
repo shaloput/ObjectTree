@@ -136,6 +136,7 @@ li {
 	min-height: 100px;
 	margin: 20px auto;
 	margin-top: 10px;
+	padding: 2px 5px;
 }
 
 button {
@@ -143,11 +144,15 @@ button {
 	height: 25px;
 }
 
+#add {
+	width: 100px;
+}
+
 .inner input {
 	height: 25px;
 	margin-bottom: 10px;
 }
 
-#oid {
+#oid, #pid {
 	width: 50px;
 }

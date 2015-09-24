@@ -47,18 +47,19 @@
 				<input type="text" id="oid">
 				<br>
 				Object Name:
-				<input type="text" id="o_name">
+				<input type="text" id="name">
 				<br>
-				Parent Name:
-				<input type="text" id="o_parent">
+				Parent ID:
+				<input type="text" id="pid">
 				<br>
 				Description:
 				<textarea type="text" id="output_d">
 				</textarea>
 					
-				<button id="add" onclick="javascript:ajax_add();">Add</button>
-				<button id="save" onclick="javascript:ajax_add();">Save</button>
-				<button id="delete" onclick="javascript:ajax_add();">Delete</button>
+				<button id="add" onclick="javascript:ajax_add(1);">Add (child)</button>
+				<button id="add" onclick="javascript:ajax_add(0);">Add (root)</button>
+				<button id="save" onclick="javascript:ajax_save();">Save</button>
+				<button id="delete" onclick="javascript:ajax_delete();">Delete</button>
 			</div>
 			</div>
 		</div>

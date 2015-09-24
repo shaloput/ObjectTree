@@ -12,7 +12,5 @@
 	$descr = $row['descr'];
 	$pid = $row['parent_id'];
 
-	echo $id."|".$name."|".$descr."|".$pid;
-
-	
+	echo $id."|".$name."|".$descr."|".$pid;	
 ?>

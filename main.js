@@ -38,6 +38,7 @@ function ajax_post(el){
 }
 
 function ajax_output(){
+
     // Create our XMLHttpRequest object
     var hr = new XMLHttpRequest();
     // Create some variables we need to send to our PHP file
@@ -79,15 +80,92 @@ function ajax_edit(el){
             var dataArray = hr.responseText.split("|");
 
             document.getElementById("oid").value = dataArray[0];
-            document.getElementById("o_name").value = dataArray[1];
-            document.getElementById("o_parent").value = dataArray[3];
-            document.getElementById("output_d").innerHTML = dataArray[2];
+            document.getElementById("name").value = dataArray[1];
+            document.getElementById("pid").value = dataArray[3];
+            document.getElementById("output_d").value = dataArray[2];
 
         }
     }
     // Send the data to PHP now... and wait for response to update the status div
+    document.getElementById("output_d").value = "processing...";
     hr.send(vars); // Actually execute the request
-    document.getElementById("output_d").innerHTML = "processing...";
+}
+
+function ajax_save() {
+     // Create our XMLHttpRequest object
+    var hr2 = new XMLHttpRequest();
+    // Create some variables we need to send to our PHP file
+    var url = "save.php";
+
+    var id = document.getElementById("oid").value;
+    var name = document.getElementById("name").value;
+    var p_id = document.getElementById("pid").value;
+    var descr = document.getElementById("output_d").value;
+    
+    var vars = "id="+id+"&name="+name+"&p_id="+p_id+"&descr="+descr;
+    
+    hr2.open("POST", url, true);
+    // Set content type header information for sending url encoded variables in the request
+    hr2.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+    // Send the data to PHP now... and wait for response to update the status div
+    hr2.send(vars); // Actually execute the request
+
+    ajax_output();
+}
+
+function ajax_add(root) {
+     // Create our XMLHttpRequest object
+    var hr2 = new XMLHttpRequest();
+    // Create some variables we need to send to our PHP file
+    var url = "add.php";
+
+    var id = document.getElementById("oid").value;
+    var name = document.getElementById("name").value;
+    var p_id = document.getElementById("pid").value;
+    var descr = document.getElementById("output_d").value;
+    
+    var is_root = root; 
+
+    var vars = "id="+id+"&name="+name+"&p_id="+p_id+"&descr="+descr+"&is_root="+is_root;
+    
+    hr2.open("POST", url, true);
+    // Set content type header information for sending url encoded variables in the request
+    hr2.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+    
+    // Send the data to PHP now... and wait for response to update the status div
+    hr2.send(vars); // Actually execute the request
+
+    ajax_output();
+}
+
+function ajax_delete() {
+     // Create our XMLHttpRequest object
+    var hr2 = new XMLHttpRequest();
+    // Create some variables we need to send to our PHP file
+    var url = "delete.php";
+
+    var id = document.getElementById("oid").value;
+    var name = document.getElementById("name").value;
+    var p_id = document.getElementById("pid").value;
+    var descr = document.getElementById("output_d").value;
+    
+    var vars = "id="+id+"&name="+name+"&p_id="+p_id+"&descr="+descr;
+    
+    hr2.open("POST", url, true);
+    // Set content type header information for sending url encoded variables in the request
+    hr2.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+    
+    hr2.onreadystatechange = function() {
+        if(hr2.readyState == 4 && hr2.status == 200) {
+            var return_data = hr2.responseText;
+            alert(return_data);
+        }
+    }
+
+    // Send the data to PHP now... and wait for response to update the status div
+    hr2.send(vars); // Actually execute the request
+
+    ajax_output();
 }
 
 ajax_output();
