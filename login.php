@@ -10,7 +10,7 @@
 	
 	<div class="header">
 		<div class="container">
-			<a href="index.php"><h3>Object Manager</h2></a>
+			<a href="#"><h3>Object Manager</h2></a>
 		
 		<?php 
 			if (!isset($_SESSION['uid'])) {

@@ -155,13 +155,6 @@ function ajax_delete() {
     // Set content type header information for sending url encoded variables in the request
     hr2.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
     
-    hr2.onreadystatechange = function() {
-        if(hr2.readyState == 4 && hr2.status == 200) {
-            var return_data = hr2.responseText;
-            alert(return_data);
-        }
-    }
-
     // Send the data to PHP now... and wait for response to update the status div
     hr2.send(vars); // Actually execute the request
 
