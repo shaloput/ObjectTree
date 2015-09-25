@@ -12,11 +12,11 @@ function hide_sibls(elem) {
 	}
 }
 
-function ajax_post(el){
+function show_descr(el){
     // Create our XMLHttpRequest object
     var hr = new XMLHttpRequest();
     // Create some variables we need to send to our PHP file
-    var url = "parse_descr.php";
+    var url = "php/descr_parse.php";
 
     //alert(el.getAttribute('id'));
     var id = el.getAttribute('id');
@@ -37,12 +37,12 @@ function ajax_post(el){
     document.getElementById("output_d").innerHTML = "processing...";
 }
 
-function ajax_output(){
+function list_objects(){
 
     // Create our XMLHttpRequest object
     var hr = new XMLHttpRequest();
     // Create some variables we need to send to our PHP file
-    var url = "parse_objects.php";
+    var url = "php/list_objects.php";
 
     //alert(el.getAttribute('id'));
    
@@ -61,11 +61,11 @@ function ajax_output(){
     document.getElementById("output_o").innerHTML = "processing...";
 }
 
-function ajax_edit(el){
+function edit_object(el){
     // Create our XMLHttpRequest object
     var hr = new XMLHttpRequest();
     // Create some variables we need to send to our PHP file
-    var url = "parse_edit.php";
+    var url = "php/edit_parse.php";
 
     //alert(el.getAttribute('id'));
     var id = el.getAttribute('id');
@@ -96,7 +96,7 @@ function add_save(root) {
      // Create our XMLHttpRequest object
     var hr2 = new XMLHttpRequest();
     // Create some variables we need to send to our PHP file
-    var url = "addsave.php";
+    var url = "php/addsave.php";
 
     var id = document.getElementById("oid").value;
     var name = document.getElementById("name").value;
@@ -114,14 +114,14 @@ function add_save(root) {
     // Send the data to PHP now... and wait for response to update the status div
     hr2.send(vars); // Actually execute the request
 
-    ajax_output();
+    list_objects();
 }
 
 function ajax_delete() {
      // Create our XMLHttpRequest object
     var hr2 = new XMLHttpRequest();
     // Create some variables we need to send to our PHP file
-    var url = "delete.php";
+    var url = "php/delete.php";
 
     var id = document.getElementById("oid").value;
     var name = document.getElementById("name").value;
@@ -137,8 +137,8 @@ function ajax_delete() {
     // Send the data to PHP now... and wait for response to update the status div
     hr2.send(vars); // Actually execute the request
 
-    ajax_output();
+    list_objects();
 }
 
-ajax_output();
+list_objects();
 

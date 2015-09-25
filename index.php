@@ -14,7 +14,7 @@
 		
 		<?php 
 			if (!isset($_SESSION['uid'])) {
-				echo "<form class='login' method='post' action='login_parse.php'>
+				echo "<form class='login' method='post' action='php/login_parse.php'>
 					<input type='text' name='username'>
 					<input type='password' name='password'>
 					<input class='btn' type='Submit' value='Log In'>";
@@ -23,7 +23,7 @@
 				}
 				echo "</form>";
 			} else {
-				echo "<p class='login'>You are logged in as ".$_SESSION['username']." &bull; <a href='logout_parse.php'>Logout</a>";
+				echo "<p class='login'>You are logged in as ".$_SESSION['username']." &bull; <a href='php/logout_parse.php'>Logout</a>";
 			}
 		?>
 			

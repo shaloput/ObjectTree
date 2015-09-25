@@ -16,11 +16,11 @@ if (isset($_POST['username'])) {
 		$_SESSION['uid'] = $row ['uid'];
 		$_SESSION['username'] = $row ['username'];
 		
-		header("Location: index.php");
+		header("Location: ../index.php");
 		exit();
 	} else {
 		$_SESSION['logged'] = false;
-		header("Location: index.php");
+		header("Location: ../index.php");
 		//echo "Invalid login information. Please return to the previous page";
 		exit();
 	}
