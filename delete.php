@@ -14,7 +14,7 @@
         $result[$row["parent_id"]][] = $row;
     }
     return $result;
-}
+	}
  
 //В переменную $category_arr записываем все категории
 $objects_arr = getObjects();

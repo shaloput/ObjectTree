@@ -56,9 +56,9 @@
 				<textarea type="text" id="output_d">
 				</textarea>
 					
-				<button id="add" onclick="javascript:ajax_add(1);">Add (child)</button>
-				<button id="add" onclick="javascript:ajax_add(0);">Add (root)</button>
-				<button id="save" onclick="javascript:ajax_save();">Save</button>
+				<button id="add" onclick="javascript:add_save(1);">Add (child)</button>
+				<button id="add" onclick="javascript:add_save(0);">Add (root)</button>
+				<button id="save" onclick="javascript:add_save();">Save</button>
 				<button id="delete" onclick="javascript:ajax_delete();">Delete</button>
 			</div>
 			</div>

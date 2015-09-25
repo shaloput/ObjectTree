@@ -91,33 +91,12 @@ function ajax_edit(el){
     hr.send(vars); // Actually execute the request
 }
 
-function ajax_save() {
+
+function add_save(root) {
      // Create our XMLHttpRequest object
     var hr2 = new XMLHttpRequest();
     // Create some variables we need to send to our PHP file
-    var url = "save.php";
-
-    var id = document.getElementById("oid").value;
-    var name = document.getElementById("name").value;
-    var p_id = document.getElementById("pid").value;
-    var descr = document.getElementById("output_d").value;
-    
-    var vars = "id="+id+"&name="+name+"&p_id="+p_id+"&descr="+descr;
-    
-    hr2.open("POST", url, true);
-    // Set content type header information for sending url encoded variables in the request
-    hr2.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
-    // Send the data to PHP now... and wait for response to update the status div
-    hr2.send(vars); // Actually execute the request
-
-    ajax_output();
-}
-
-function ajax_add(root) {
-     // Create our XMLHttpRequest object
-    var hr2 = new XMLHttpRequest();
-    // Create some variables we need to send to our PHP file
-    var url = "add.php";
+    var url = "addsave.php";
 
     var id = document.getElementById("oid").value;
     var name = document.getElementById("name").value;

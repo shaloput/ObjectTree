@@ -11,7 +11,8 @@ function getObjects() {
     }
     return $res;
 }
- 
+
+
 //В переменную $objects_arr записываем все объекты
 $objects_arr = getObjects();
 
