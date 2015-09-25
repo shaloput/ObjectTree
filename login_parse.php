@@ -16,7 +16,7 @@ if (isset($_POST['username'])) {
 		$_SESSION['uid'] = $row ['uid'];
 		$_SESSION['username'] = $row ['username'];
 		
-		header("Location: login.php");
+		header("Location: index.php");
 		exit();
 	} else {
 		$_SESSION['logged'] = false;
